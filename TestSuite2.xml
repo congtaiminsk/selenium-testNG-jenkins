@@ -9,7 +9,7 @@
 		<parameter name="username" value="ValidUsername" />
 		<parameter name="password" value="ValidPassword" />
 		<classes>
-			<class name="tests.LoginPageTest" />
+			<class name="tests.SampleTest" />
 		</classes>
 	</test>
 

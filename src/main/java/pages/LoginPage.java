@@ -26,6 +26,7 @@ public class LoginPage {
 	}
 	
 	public void enterPassword(String password) {
+		wait.until(ExpectedConditions.presenceOfElementLocated(passwordField));
 		driver.findElement(passwordField).clear();
 		driver.findElement(passwordField).sendKeys(password);
 	}

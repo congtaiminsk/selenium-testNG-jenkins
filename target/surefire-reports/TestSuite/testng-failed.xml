@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [TestSuite]">
+  <listeners>
+    <listener class-name="listeners.ExtentReportListener"/>
+  </listeners>
+  <test thread-count="5" verbose="0" name="Smoke Test(failed)">
+    <parameter name="password" value="ValidPassword"/>
+    <parameter name="username" value="ValidUsername"/>
+    <classes>
+      <class name="tests.HomePageTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="tc_001"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- tests.HomePageTest -->
+    </classes>
+  </test> <!-- Smoke Test(failed) -->
+</suite> <!-- Failed suite [TestSuite] -->

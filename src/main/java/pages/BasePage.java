@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -19,6 +20,7 @@ public class BasePage {
 	public static WebDriver driver;
 	public static ExtentTest logger = new ExtentTest("sample", "sample");
 	public static ExtentReports report;
+    public static WebDriverWait wait;
 
 	@BeforeClass(alwaysRun=true)
 	public void setup(ITestContext context) throws ConfigurationException {
@@ -31,7 +33,7 @@ public class BasePage {
 		options.addArguments("--incognito");
 		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
-		driver.get(baseUrl);
+//		driver.get(baseUrl);
 		context.setAttribute("WebDriver", driver);
 	}
 

@@ -5,7 +5,7 @@
 	<listeners>
 		<listener class-name="listeners.ExtentReportListener" />
 	</listeners>
-	<test name="Smoke Test">
+	<test name="Smoke Test" >
 		<parameter name="username" value="ValidUsername" />
 		<parameter name="password" value="ValidPassword" />
 		<classes>

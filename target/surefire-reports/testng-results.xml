@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" ignored="0" total="3" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="TestSuite" duration-ms="10757" started-at="2022-10-05T21:39:24 ICT" finished-at="2022-10-05T21:39:35 ICT">
+    <groups>
+    </groups>
+    <test name="Smoke Test" duration-ms="10757" started-at="2022-10-05T21:39:24 ICT" finished-at="2022-10-05T21:39:35 ICT">
+      <class name="tests.SpacePageTest">
+        <test-method status="PASS" signature="setup(org.testng.ITestContext)[pri:0, instance:tests.SpacePageTest@5f9d02cb]" name="setup" is-config="true" duration-ms="2468" started-at="2022-10-05T21:39:30 ICT" finished-at="2022-10-05T21:39:33 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@7bdf6bb7]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tc_002()[pri:1, instance:tests.SpacePageTest@5f9d02cb]" name="tc_002" duration-ms="1817" started-at="2022-10-05T21:39:33 ICT" finished-at="2022-10-05T21:39:34 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc_002 -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:tests.SpacePageTest@5f9d02cb]" name="tearDown" is-config="true" duration-ms="687" started-at="2022-10-05T21:39:34 ICT" finished-at="2022-10-05T21:39:35 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.SpacePageTest -->
+      <class name="tests.HomePageTest">
+        <test-method status="PASS" signature="setup(org.testng.ITestContext)[pri:0, instance:tests.HomePageTest@370736d9]" name="setup" is-config="true" duration-ms="4228" started-at="2022-10-05T21:39:24 ICT" finished-at="2022-10-05T21:39:29 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@7bdf6bb7]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="tc_001()[pri:0, instance:tests.HomePageTest@370736d9]" name="tc_001" duration-ms="24" started-at="2022-10-05T21:39:29 ICT" finished-at="2022-10-05T21:39:29 ICT">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Title does not match expected [W3Schools Online Web Tutorials1] but found [W3Schools Online Web Tutorials]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Title does not match expected [W3Schools Online Web Tutorials1] but found [W3Schools Online Web Tutorials]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:575)
+at tests.HomePageTest.tc_001(HomePageTest.java:17)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:497)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at org.testng.TestRunner$$Lambda$49/265119009.accept(Unknown Source)
+at java.util.ArrayList.forEach(ArrayList.java:1249)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
+at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc_001 -->
+        <test-method status="PASS" signature="tc_002()[pri:1, instance:tests.HomePageTest@370736d9]" name="tc_002" duration-ms="546" started-at="2022-10-05T21:39:29 ICT" finished-at="2022-10-05T21:39:29 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc_002 -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:tests.HomePageTest@370736d9]" name="tearDown" is-config="true" duration-ms="713" started-at="2022-10-05T21:39:29 ICT" finished-at="2022-10-05T21:39:30 ICT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.HomePageTest -->
+    </test> <!-- Smoke Test -->
+  </suite> <!-- TestSuite -->
+</testng-results>
