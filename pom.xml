@@ -13,14 +13,26 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<poi.version>5.2.0</poi.version>
 		<jexcel.version>1.0.6</jexcel.version>
 		<maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
+		<aspectj.version>1.9.7</aspectj.version>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>1.9.7</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -127,10 +139,32 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.1</version>
                     <configuration>
-                        <source>8</source>
-                        <target>8</target>
+                        <source>11</source>
+                        <target>11</target>
+						<useIncrementalCompilation>false</useIncrementalCompilation>
                     </configuration>
                 </plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>aspectj-maven-plugin</artifactId>
+					<version>1.14.0</version>
+					<configuration>
+						<complianceLevel>11</complianceLevel>
+						<source>11</source>
+						<target>11</target>
+						<showWeaveInfo>true</showWeaveInfo>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>process-sources</phase>
+							<goals>
+								<goal>compile</goal>
+								<goal>test-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
