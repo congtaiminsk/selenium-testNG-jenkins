@@ -1,0 +1,505 @@
+1. Giới thiệu về behave và gherkin: tổng quan về công nghệ, mục đích sử dụng và các tính năng chính.
+2. Cách cài đặt và sử dụng behave: hướng dẫn cài đặt và sử dụng behave trên hệ điều hành khác nhau, cách tạo và chạy các bài kiểm thử với behave.
+3. Tạo và viết các feature file với gherkin: Thành phần của Gherkin file và viết các feature file với gherkin
+4. Kết hợp behave và gherkin với các ngôn ngữ lập trình khác: hướng dẫn cách kết hợp behave và gherkin với các ngôn ngữ lập trình như Python, Ruby, Java để tạo và chạy các bài kiểm thử.
+5. Giải thích các tùy chọn và cách tùy chỉnh các tham số của behave.
+6. Tổng kết: Một số lưu ý khi sử dụng behave và gherkin
+
+Mục 1: Giới thiệu về behave và gherkin: tổng quan về công nghệ, mục đích sử dụng và các tính năng chính.
+
+Behave là một công cụ kiểm thử tự động cho phép mô tả các trường hợp kiểm thử theo cú pháp Gherkin. 
+Gherkin là một ngôn ngữ mô tả đặc tả hướng đối tượng (BDD) dùng để mô tả các tính năng của một phần mềm theo cách rõ ràng và dễ hiểu cho mọi người.
+
+Nó cung cấp một cách tiếp cận để mô tả các trường hợp kiểm thử bằng cách sử dụng các câu lệnh Given, When, Then, ...(refer mục )
+
+Behave và gherkin có thể được sử dụng với nhiều ngôn ngữ lập trình khác nhau như Python, Ruby, Java 
+và có thể tích hợp với các công cụ kiểm thử khác: behave và gherkin có thể được tích hợp với các công cụ kiểm thử khác như Selenium, Appium để tạo và chạy các bài kiểm thử tự động trên trình duyệt web hoặc ứng dụng di động.
+
+Hỗ trợ cho việc kiểm thử trên nhiều nền tảng khác nhau: có thể được sử dụng trên nhiều hệ điều hành khác nhau như Windows, Linux, MacOS.
+
+Cung cấp môi trường chuyên dụng cho việc kiểm thử: với công cụ behave và gherkin, người dùng có thể tạo ra các môi trường riêng cho việc kiểm thử,
+giúp cho việc kiểm thử trở nên hiệu quả hơn và dễ dàng hơn bằng các cách: 
+ + sử dụng tệp tin cấu hình 
+ + tham số dòng lệnh để đặt giá trị cho các tham số cấu hình
+ Ví dụ, nếu muốn tạo ra môi trường riêng cho việc kiểm thử với thông tin username, password khác nhau trên môi trường khác nhau và chạy bài kiểm thử với tệp tin cấu hình tương ứng
+ 
+ Cách 1: sử dụng tệp cấu hình (đuôi .ini)
+ testing.ini
+ [behave]
+username = testusertestingenv
+password = testpasstestingenv
+
+product.ini
+[behave]
+username = testuserprodenv
+password = testpassprodenv
+
+Sau đó, có thể chạy bài kiểm thử với tệp tin cấu hình tương ứng trên môi trường khác nhau bằng cách sử dụng tham số dòng lệnh như sau:
+
+behave --config product.ini
+behave --config testing.ini
+
+Cách 2: sử dụng command để chạy
+
+behave -D username='testusertestingenv' -D password='testpasstestingenv'
+behave -D username='testuserprodenv' -D password='testpassprodenv'
+
+Tích hợp với các hệ quản trị phần mềm khác: công cụ behave và gherkin có thể được tích hợp với các hệ quản trị phần mềm khác như Jenkins, Travis CI để tự động hóa quy trình kiểm thử và giám sát chất lượng phần mềm.
+
+2. Cách cài đặt:
+Refer đến sheet Cài đặt:
+Để cài đặt và sử dụng công cụ behave, thực hiện các bước sau:
+
+Cài đặt Python trên máy tính, có thể dùng Software Center. Behave yêu cầu Python phiên bản 2.7 hoặc 3.5 trở lên để hoạt động.
+
+Cài đặt công cụ pip, một trình quản lý gói Python, bằng cách gõ lệnh sau trên dòng lệnh:
+
+pip install pip
+
+Cài đặt công cụ behave bằng cách sử dụng pip, gõ lệnh sau trên dòng lệnh:
+
+pip install behave
+
+Tạo một folder chứa các bài kiểm thử với công cụ behave. Trong thư mục này, tạo một tệp tin có tên là "features" và một thư mục con có tên là "steps". 
+Trong thư mục "features", tạo một tệp tin với đuôi .feature và nhập nội dung các bài kiểm thử theo cú pháp của Gherkin. 
+Trong thư mục "steps", tạo một tệp tin Python đuôi .py chứa các function implement các step trong các bài kiểm thử.
+
+Để chạy các bài kiểm thử với behave, mở dòng lệnh và truy cập vào thư mục chứa bài kiểm thử, sau đó gõ lệnh sau:
+
+behave
+
+3. Tạo và viết các feature file với gherkin: Thành phần của Gherkin file và viết các feature file với gherkin
+
+Để tạo và viết các feature file với gherkin, thực hiện các bước sau:
+
+i) Tạo một thư mục chứa các bài kiểm thử với công cụ behave. Trong thư mục này, tạo một thư mục con có tên là "features" và một thư mục con khác có tên là "steps".
+
+ii) Trong thư mục "features", tạo một tệp tin với đuôi .feature và nhập nội dung các bài kiểm thử theo cú pháp của Gherkin. Mỗi bài kiểm thử được mô tả trong một tệp tin riêng, với mỗi tệp tin chứa một hoặc nhiều chức năng (feature).
+
+a) Các keywords của Gherkin (.feature file)
+
+
+
+
+Feature: Dùng để mô tả một chức năng của hệ thống.
+	Feature file phải bắt đầu bằng từ khóa "Feature" và mô tả ngắn gọn về chức năng của Feature.
+	Mỗi Feature file chỉ nên chứa một Feature duy nhất.
+	Mỗi Feature cần chứa ít nhất một Scenario, mô tả cách hệ thống sẽ hoạt động trong trường hợp nào đó.
+	Feature: Search for products on the website
+		As an user, I want to search for products on the website, so that I can easily find the products I want.
+		
+		
+Q&A: 
+Q: viết 2 feature trên vào cùng 1 file .feature thì chương trình có hoạt động bình thường không ?
+A: nếu viết hai Feature mô tả hai chức năng khác nhau vào cùng một file .feature, chương trình sẽ vẫn hoạt động bình thường.
+Tuy nhiên, việc sử dụng một file .feature để mô tả nhiều chức năng khác nhau có thể làm tăng độ phức tạp của Feature file và khó khăn hơn trong việc quản lý và theo dõi các Scenario trong đó.
+Để dễ dàng hơn trong việc quản lý và theo dõi các chức năng, nên tạo một file .feature riêng cho mỗi Feature mô tả một chức năng duy nhất.
+
+
+
+
+
+Scenario:
+Scenario là một phần không thể thiếu trong một Feature file sử dụng Gherkin. Nó được sử dụng để mô tả một tình huống cụ thể mà người dùng muốn kiểm thử trong chức năng được mô tả bởi Feature.
+
+Quy tắc sử dụng Scenario:
+-Mỗi Feature file chỉ có thể chứa một Feature keyword, nhưng có thể chứa nhiều Scenario.
+Ví dụ: 
+
+Feature: Search for products on the website
+As an user, I want to search for products on the website, so that I can easily find the products I want.
+
+Scenario: Successfully search for a product
+Given I am on the homepage of the website
+And I have entered the name of a product in the search bar
+When I click the search button
+Then I am redirected to the search results page and see the product I was looking for in the results
+
+Scenario: Unsuccessful search for a product
+Given I am on the homepage of the website
+And I have entered the name of a non-existent product in the search bar
+When I click the search button
+Then I am redirected to the search results page and see a notification that no products were found.
+
+-Mỗi Scenario bao gồm các bước Given, When, Then để mô tả các hành động được thực hiện, điều kiện và kết quả mong muốn của người dùng.
+-Keyword Scenario không được sử dụng trong các bước Given, When, Then, mà chỉ được sử dụng trong một dòng riêng để bắt đầu một Scenario.
+Ví dụ sau, test sẽ không được thuợ hiện đúng vì Scenario không nằm ở vị trí bắt đầu 1 scenario
+Given the user is on the homepage 
+Scenario: Successful login
+When the user enters their username and password
+Then the login button is enabled
+
+-Các bước Given, When, Then không được sử dụng ở cùng 1 dòng, mỗi bước phải được viết trong một dòng riêng.
+Ví dụ:
+VD1: nên
+Given the user is on the homepage
+When the user enters their username and password
+Then the login button is enabled
+
+VD2: không được
+Given the user is on the homepage and the user enters their username and password
+Then the login button is enabled
+
+Q&A: 
+Q: nếu viết given when then trên cùng 1 dòng thì chương trình có chạy bình thường không ?
+A: Viết các bước Given, When, Then trên cùng một dòng có thể làm cho đoạn test không được chạy đúng. 
+Điều này xảy ra vì các bước Given, When, Then đều là các keyword có nghĩa trong ngôn ngữ Gherkin, và để Gherkin hiểu được ý nghĩa của các bước này, chúng phải được viết trong một dòng riêng.
+
+
+
+
+Given: Dùng để mô tả một điều kiện ban đầu.
+Given được sử dụng để mô tả trạng thái ban đầu của một Scenario, 
+hoặc những điều kiện cần thiết cho việc thực hiện hành động trong Scenario. Nó thường được sử dụng để khởi tạo các giá trị, kết nối đến cơ sở dữ liệu hoặc mở trình duyệt,app
+
+Ví dụ:
+Scenario: Successful login
+Given the user is on the homepage
+When the user enters their username and password
+Then the login button is enabled
+
+Trong ví dụ trên, bước Given định nghĩa rằng trước khi thực hiện hành động đăng nhập, người dùng phải đứng tại homepage
+
+
+
+
+
+When: Dùng để mô tả một hành động được thực hiện.
+
+
+
+
+Then: Dùng để mô tả một kết quả mong đợi sau khi thực hiện hành động.
+
+
+
+
+
+
+And: Dùng để kết nối các điều kiện hoặc hành động, kết quả mong đợi khác nhau trong một scenario. (nối các given, when, then)
+
+
+
+
+
+
+But: được sử dụng để miêu tả một điều kiện hoặc hành động không như mong đợi.
+Nó thường được sử dụng sau một bước Given, When hoặc Then để miêu tả một sự khác biệt so với một sự mong đợi cụ thể.
+
+Scenario: Unsuccessful login
+Given the user is on the login page
+When the user enters their username
+And the user enters incorrect password
+Then the login button is enabled
+But the user is not logged in
+
+
+
+
+
+
+
+
+Rule: 
+Rule là một từ khóa trong Gherkin dùng để khai báo một cách tổng quát một tình huống muốn kiểm thử. 
+Nó được sử dụng để khai báo một nhóm các Scenario, và chúng đều đều có một số điều kiện chung.
+
+
+Q&A
+Q: Tôi thấy rằng Feature và Rule đều mô tả overview về chức năng mà, vậy chúng giống nhau à ?
+A: Feature và Rule đều mô tả tập hợp các chức năng của hệ thống đang kiểm thử. 
+Cả hai có thể bao gồm nhiều Scenario và mỗi Scenario có thể bao gồm nhiều bước Given, When, Then. 
+Tuy nhiên, Feature được sử dụng để mô tả tập hợp các chức năng chính của hệ thống, 
+trong khi Rule được sử dụng để mô tả tập hợp các chức năng con của hệ thống, thường là một phần của một Feature. 
+Ví dụ:
+
+Feature: Login functionality
+
+Rule: Unsuccessful login
+Scenario: Unsuccessful login with invalid username
+Given the user is on the login page
+When the user enters an invalid username
+And the user enters the correct password
+Then the login button is enabled
+And the user is not logged in
+
+Scenario: Unsuccessful login with invalid password
+Given the user is on the login page
+When the user enters the correct username
+And the user enters an invalid password
+Then the login button is enabled
+And the user is not logged in
+
+Rule: Successful login
+Scenario: Successful login with valid credentials
+Given the user is on the login page
+When the user enters the correct username
+And the user enters the correct password
+Then the login button is enabled
+And the user is logged in
+
+
+Trong ví dụ trên, một Feature có thể là "Login functionality", trong khi một Rule có thể là "Unsuccessful login" hoặc "Successful login".
+
+
+
+
+
+Background
+Background được sử dụng để khai báo một số bước khởi tạo mà phải thực hiện trước khi mỗi scenario trong feature file được thực hiện.
+Ví dụ như, muốn khai báo rằng mỗi scenario đều phải bắt đầu bằng việc đăng nhập vào hệ thống,  có thể sử dụng Background để khai báo bước đăng nhập này.
+
+Feature: User login
+
+Background:
+Given the user is on the login page
+
+Scenario: Successful login
+When the user enters their correct username and password
+Then the user is redirected to the homepage and sees a success message
+
+Scenario: Unsuccessful login
+When the user enters an incorrect username and password
+Then the user sees an error message
+
+Trong ví dụ trên, bước "Given the user is on the login page" được khai báo trong Background và sẽ được thực hiện trước khi mỗi scenario trong feature file được thực hiện.
+
+Quy tắc sử dụng:
+
+Background phải được viết trong cùng một file .feature với các Scenario sử dụng nó.
+
+Background phải được viết trong một dòng riêng và bắt đầu bằng từ khóa "Background".
+
+Các bước trong Background phải được viết theo cú pháp Given, When, Then.
+
+
+
+Scenario Outline và Examples
+
+Scenario Outline là một cách để viết một Scenario một cách chung chung, không phải viết cho từng trường hợp cụ thể.
+Scenario Outline là cách để định nghĩa một kế hoạch kiểm thử mà có thể được sử dụng nhiều lần với các giá trị khác nhau. 
+Nó bao gồm các bước Given, When, Then và các giá trị tương ứng được gọi là mẫu. Trong mỗi lần chạy, các mẫu sẽ được thay thế bằng các giá trị thực tế khác nhau từ Examples.
+Ví dụ:
+
+Feature: User login
+
+Scenario Outline: Successful login
+Given the user is on the login page
+When the user enters their <username> and <password>
+Then the login is successful
+
+Examples:
+| username | password |
+| user1 | pass1 |
+| user2 | pass2 |
+
+Trong ví dụ này, Scenario Outline sẽ được thực hiện hai lần với hai trường hợp khác nhau của username và password được liệt kê trong Examples. 
+
+Q&A
+Q: Sự khác nhau cơ bản giữa Scenario và Scenario Outline là gì ?
+A: Scenario Outline thì truyền động tham số đc, còn Scenario thì ko
+
+Q: Có nên sử dụng Scenario Outline thay cho Scenario được không ?
+A: Không nên
+Xét ví dụ sau:
+
+VD1: Dùng Scenario Outline thay cho Scenario mà ko đi kèm Examples -> ko hoạt động đc
+Feature: User login(1)
+
+Scenario Outline: Successful login with different username and password
+Given the user is on the login page
+When the user enters their username and password
+Then the login is successful
+
+Feature: User login(2)
+
+Scenario: Successful login with different username and password
+Given the user is on the login page
+When the user enters their username and password
+Then the login is successful
+
+User login(2) sẽ hoạt động, còn User login(1) sẽ không.
+Vì Scenario Outline trong User login(1) đang ko đi kèm Examples
+Note : một Scenario Outline luôn cần phải có một Examples table để chứa các giá trị tham số để thực hiện nhiều lần theo các trường hợp khác nhau. 
+Nếu không có Examples table, Scenario Outline sẽ không có ý nghĩa và không thể thực hiện được.
+VD2: Dùng Scenario Outline thay cho Scenario có Examples -> vẫn hoạt động được nhưng ko clear về mặt ngữ nghĩa 
+Feature: User login
+
+Scenario Outline: Successful login with different username and password
+Given the user is on the login page
+When the user enters their username and password
+Then the login is successful
+
+Examples:
+|user|password|
+|test1|test1pwd|
+
+Quy tắc:
+
+Keyword Scenario Outline phải được viết trong một dòng riêng và không được sử dụng trong các bước Given, When, Then.
+
+
+Mỗi cột trong Examples phải được đặt tên và các tên này được sử dụng trong các bước Given, When, Then.
+Tên cột trong Examples phải trùng với tên các tham số trong Scenario Outline.
+
+Mỗi dòng trong Examples phải bắt đầu bằng một ký tự đặc biệt |
+
+
+
+Mỗi hàng trong Examples sẽ tương ứng với một Scenario, và các giá trị trong từng ô sẽ được sử dụng thay thế cho các giá trị tương ứng trong Scenario Outline.
+
+Scenario Outline có thể sử dụng một hoặc nhiều hàng trong Examples, và các Scenario sẽ được tạo ra tương ứng
+
+
+
+
+
+Tag
+Để sử dụng tag trong một Feature hoặc Scenario, có thể thêm một dấu @ trước tên của tag trong một dòng riêng trước Feature hoặc Scenario.
+Có thể sử dụng nhiều tag cho một Feature hoặc Scenario bằng cách phân tách chúng bằng dấu phẩy. 
+
+@tag1 @tag2
+Feature: User login
+
+@tag3
+Scenario: Successful login
+Given the user is on the login page
+When the user enters their correct username and password
+Then the login is successful
+
+Sau đó, có thể chạy các Feature hoặc Scenario có tag xác định bằng cách sử dụng lệnh 
+
+behave -t @smoke
+behave -t @smoke,@regression
+
+Để chạy tất cả các scenario trừ các scenario có tag "excluded_tag", có thể sử dụng câu lệnh sau:
+
+behave -t ~@excluded_tag
+
+Q&A
+Q: Đặt tag phía trên Feature và Scenario (Scenario Outline)thì có gì khác nhau
+A: Nếu tag được đặt trên Feature thì nó sẽ chạy tất cả các scenario của Feature đó.
+
+
+
+Comment: 
+sử dụng kí tự "#" để tạo một dòng comment.
+Mọi nội dung nằm sau kí tự "#" sẽ không được xem là một phần của cú pháp Gherkin và sẽ không được thực hiện bởi các công cụ test automation.
+
+# This is a comment
+Feature: User login
+  # This is also a comment
+  Scenario: Successful login
+    Given the user is on the login page
+    When the user enters their correct username and password
+    Then the login is successful
+
+
+
+
+b) Cấu trúc của 1 file .feature
+
+Ví dụ về 1 file .feature có tất cả các keyword và tags
+
+@login
+Feature: User login
+# This is a comment
+Rule: Login functionality
+The login functionality should allow users to log in the system
+
+Background:
+Given the user is on the login page
+
+Scenario Outline: Successful login with different username and password
+Given the user has entered their correct <username>
+When the user enters their correct <password>
+Then the login is successful
+
+Examples:
+|user|password|
+|test1|test1pwd|
+|test2|test2pwd|
+
+Scenario: Unsuccessful login with incorrect password
+Given the user has entered their correct username
+When the user enters an incorrect password
+Then the login is unsuccessful
+
+Scenario: Unsuccessful login with incorrect username
+Given the user has entered an incorrect username
+When the user enters their correct password
+Then the login is unsuccessful
+
+
+
+
+
+	
+
+4. Kết hợp behave và gherkin với các ngôn ngữ lập trình khác, ví dụ là python, và appnium để kiểm thử trên nền tảng di động
+
+Ví dụ của KH đã khá cụ thể nên ko focus nhiều, paste ảnh vào
+
+5. giải thích các tùy chọn và cách tùy chỉnh các tham số của behave.
+
+Sử dụng tùy chọn --format của behave để chỉ định cách để hiển thị kết quả của testcase,  nó cho phép chỉ định định dạng báo cáo. Có nhiều định dạng khác nhau có sẵn, như json, html, pretty.ví dụ như --format=pretty sẽ in kết quả dưới dạng đẹp hơn
+Ví dụ, nếu muốn chạy tất cả các test case trong thư mục features/ và hiển thị kết quả trong dạng đẹp, có thể sử dụng lệnh sau:
+
+behave features/ --format=pretty
+
+-e, --exclude: Cho phép chỉ định các tag muốn bỏ qua. Ví dụ, behave -e @smoke sẽ bỏ qua những scenario có tag @smoke.
+
+-t, --tags: Cho phép chỉ định các tag muốn chạy. Ví dụ, behave -t @smoke sẽ chỉ chạy những scenario có tag @smoke.
+
+--no-capture: Dùng để hiển thị các thông báo của Python trong khi chạy.
+behave --no-capture
+Trong quá trình chạy, nếu có bất kỳ lỗi nào xảy ra, thông báo lỗi sẽ được hiển thị trên màn hình. Ví dụ, nếu có lỗi xảy ra trong một scenario, thông báo lỗi sẽ hiển thị như sau:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/behave/model.py", line 1465, in run
+    run_with_path(filename)
+  File "/usr/local/lib/python3.8/site-packages/behave/model.py", line 1428, in run_with_path
+    feature = parser.parse(filename)
+  File "/usr/local/lib/python3.8/site-packages/behave/parser.py", line 634, in parse
+    feature = self.feature_parser.parse(self.gherkin_source)
+  File "/usr/local/lib/python3.8/site-packages/gherkin/parser.py", line 65, in parse
+    self.scanner.scan(gherkin_source)
+  File "/usr/local/lib/python3.8/site-packages/gherkin/scanner.py", line 10, in scan
+    self.scan_lines(lines)
+  File "/usr/local/lib/python3.8/site-packages/gherkin/scanner.py", line 33, in scan_lines
+    self.scan_next_line()
+  File "/usr/local/lib/python3.8/site-packages/gherkin/scanner.py", line 47, in scan_next_line
+    self.scan(line)
+  File "/usr/local/lib/python3.8/site-packages/gherkin/scanner.py", line 27, in scan
+    self.scan_tokens()
+  File "/
+
+
+--no-capture-stderr: Dùng để hiển thị các thông báo lỗi của Python trong khi chạy.
+File "/path/to/your/code.py", line 7, in <module>
+  do_something()
+NameError: name 'do_something' is not defined
+
+
+--stop: Dùng để dừng chạy ngay sau khi có lỗi.
+behave --stop, khi có lỗi xảy ra, chạy trình kiểm thử sẽ bị dừng lại và không tiếp tục với các bước tiếp theo. Điều này có thể hữu ích khi muốn dừng chạy ngay sau khi tìm thấy lỗi để tiến hành fix bug trước khi tiếp tục chạy lại.
+
+--fail-fast: Dùng để dừng chạy ngay sau khi có lỗi.
+--fail-fast cũng tương tự như --stop, nó sẽ dừng chạy ngay sau khi gặp lỗi đầu tiên. Tuy nhiên, --fail-fast có thể sử dụng để dừng chạy cả khi có nhiều scenario đang chạy đồng thời, trong khi --stop chỉ dừng chạy khi có lỗi trong một scenario đơn lẻ. 
+--outfile là một tùy chọn cho phép chỉ định một tập tin để lưu trữ kết quả của các bước kiểm thử. Ví dụ, có thể sử dụng câu lệnh behave --outfile=output.txt để lưu kết quả kiểm thử vào tập tin output.txt. Kết quả sẽ bao gồm các thông tin về các bước kiểm thử đã thực hiện, trạng thái của chúng (thành công hoặc thất bại) và các thông báo lỗi nếu có. 
+Tùy chọn này có thể hữu ích khi muốn lưu lại kết quả kiểm thử để dễ dàng theo dõi và phân tích sau này.
+
+6. Tổng kết lại một số lưu ý quan trọng khi sử dụng behave và gherkin
+
+Các tên Feature, Rule, Scenario và Examples phải được viết rõ ràng và dễ hiểu, và nên đặt tên theo ngữ nghĩa của chúng.
+Các tên biến trong Examples phải khớp với tên biến trong Scenario Outline.
+Sử dụng tag để nhóm các Feature, Rule, Scenario và Examples lại và để chạy chúng theo nhóm.
+Sử dụng các từ khóa "And" và "But" để kết nối các mệnh đề trong một Scenario.
+
+Sử dụng các từ khóa "Given", "When" và "Then" để chia nhỏ các Scenario thành các bước rõ ràng và dễ hiểu.
+Đặt tên cho các scenario và feature ngắn gọn và rõ ràng, không sử dụng những từ không cần thiết
+Sử dụng tag để phân loại các feature và scenario, giúp việc tìm kiếm và chạy testcase dễ dàng hơn
+Sử dụng Scenario Outline để test với nhiều trường hợp khác nhau, để không phải viết lại nhiều scenario
+Thực hiện việc kết hợp với các ngôn ngữ lập trình khác như Python để tạo automation script cho các bước trong Gherkin
+
+
